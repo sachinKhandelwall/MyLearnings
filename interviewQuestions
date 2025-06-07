@@ -1,0 +1,244 @@
+
+
+Take an example of tests—how does Selenium execute the test?
+
+What is the lifecycle of a test?
+
+What is the entry point in Selenium?
+
+How does test execution in the test lifecycle work in Selenium?
+
+What are Jenkins pipeline configurations?
+
+What is a Selenium configuration file?
+
+How do you handle XML?
+
+What are configuration files?
+
+How do you read an XML file?
+
+How do you read an XML configuration file in a framework?
+
+What is the difference between InputStream and BufferedReader?
+
+What is Log4j?
+
+How do you set up Log4j from scratch?
+
+How do you initialize Log4j?
+
+What is LogManager?
+
+What are Maven plugins and their use?
+
+What is the recent version of the Maven Surefire Plugin?
+
+Is it possible to have different versions of a plugin?
+
+Log4j 1.25 and adding other dependencies like Jackson have different Log4j. How do you exclude Log4j conflicts?
+
+What does mvn clean verify do?
+
+What does -D mean in Maven?
+
+What does -D x123 mean?
+
+What does git fetch do?
+
+What does git reset HEAD do?
+
+How do you unstage a commit using its ID in Git?
+
+Explain nested exception handling.
+
+Why is the finally block used?
+
+What is the difference between throw and throws?
+
+Explain a custom exception class in any framework.
+
+What is the difference between TreeMap and HashMap?
+
+Can we override a static method?
+
+Why can't we override a static method?
+
+What is a copy constructor?
+
+How do you overload a constructor?
+
+
+----------------------------------------------------------------------------------------------------------------
+
+
+What will happen with findElement and findElements if the XPath doesn’t exist?
+
+What are 4 different ways to perform a normal click and a right-click? Which method needs to be used in which scenario?
+
+How will you handle a Chrome version upgrade issue?
+
+How does WebDriverManager work?
+
+You are typing into an input box and entering some values; later on, you want to verify the text. How can you do that?
+
+What are Selenium Desired Capabilities?
+
+What is headless mode in browsers, and how is it used in Selenium?
+
+What are the disadvantages of headless mode?
+
+Using a balance scale only twice, how can you identify a faulty coin among 9 coins?
+
+
+----------------------------------------------------------------------------------------------------------------
+
+
+When designing a Selenium framework, what are the steps you follow?
+Annotations in TestNG:
+
+What happens after annotations in TestNG?
+Working with Properties Files:
+
+If a website’s username and password are stored in a .properties file, how do you fetch those values in your test methods?
+How do you use the application.properties file in Selenium for test methods?
+Dependency Management in Maven:
+
+What are the elements in a pom.xml file?
+Handling Selenium Version Updates:
+
+Your manager asks you to update the Selenium version in the project without raising a pull request. How would you do it?
+Static Methods in Automation Frameworks:
+
+Have you used static methods in an automation framework? If yes, where and how?
+API Testing Questions:
+Working with REST Assured:
+
+What are some common problems you have solved using REST Assured?
+Properties File Usage:
+
+How can you use a properties file for API testing to manage base URLs, endpoints, or authentication details?
+General Automation Questions:
+Overloading and Overriding in Frameworks:
+
+Can you overload methods in your framework? How does the compiler decide which method to use?
+Framework Utility Methods:
+
+How do you manage utility methods like logging, data generation, or configuration management in your framework?
+Driver Management:
+
+How do you manage WebDriver instances efficiently (e.g., using Singleton patterns)?
+Framework Updates:
+
+How do you ensure framework components like WebDriver, dependencies, and configuration are updated regularly?
+Custom Framework Methods:
+
+How do you write reusable functions in your automation framework for actions like waiting for elements or handling exceptions?
+
+How do you handle popups in Selenium?
+How do you rerun the failed test cases in an automation test suite?
+How does the machine pick up the failed tests?
+How do you take a screenshot in Selenium?
+How do you upload elements in automation?
+How do you handle double-click in Selenium?
+How do you perform drag and drop in Selenium?
+Difference between dragAndDrop() method and clickAndHold() + moveToElement() + release() method for drag-and-drop in Selenium?
+
+What is the difference between PUT and POST methods?
+What is the difference between URL and URI?
+What is database automation testing?
+Selenium Questions
+Write a Selenium script to go to Amazon, search for a mobile, and click on the 5th element to add it to the cart.
+Provide a locator in Selenium for the button: <button class="a-button-text" type="button" id="a-autoid-3-announce">Add to cart</button>.
+Write a Selenium script to click on a specific button based on its HTML.
+How to handle challenges in Selenium automation testing?
+General Automation Questions
+What kind of challenges have you faced in automation testing?
+What are the preferences for locators in Playwright?
+What inbuilt methods for locators exist in Playwright?
+Explain the difference between git rebase and git merge.
+What is the git cherry-pick command?
+
+
+----------------------------------------------------------------------------------------------------------------
+
+Write a Java program to determine whether a given string of parentheses is balanced or unbalanced. Your solution should handle all types of brackets:
+
+What is Kafka and what is it used for?
+
+Why is UI automation preferred over API automation?
+
+What is encapsulation?
+
+You have a method with multiple parameters, and the number of parameters is dynamic, decided at runtime — how will you handle it?
+
+What if a method has multiple return values?
+
+In Java, is it also possible (to return multiple values)?
+
+Do you know what is dot params (...params)?
+
+What is RequestSpecification?
+
+What is the difference between form param and query param?
+
+What are listeners?
+
+How to run failed tests in different ways?
+
+Any other method (to run failed tests)?
+
+Is test-output a file or a package?
+
+You have error code 401 — what could be the problem and solution?
+
+You are writing a request in Rest Assured and getting failures — how will you debug?
+
+Difference between String and StringBuffer?
+
+What is mutable?
+
+Can you give me test cases for pagination?
+
+Selenium 4 vs Selenium 3?
+
+Write code in Selenium to:
+
+Go to google.com
+
+Type name “swati”
+
+Print what is written in the search box
+What do you check while doing manual testing in Postman?
+
+Did you use any fantasy apps? How do you think of using them? Give an example of Dream11.
+
+Give top-line test cases.
+
+Write a Java program where if the user enters 1, the output is 0, and if they enter 0, the output is 1.
+
+Write a program to find the second smallest in a random array.
+
+Does Java support multiple inheritance?
+
+Why does Java not support multiple inheritance?
+
+What is the core reason for the diamond problem?
+
+Is a String object allowed?
+
+How many ways can we create String objects?
+
+What is the difference between String creation using literals and new keyword?
+
+
+If string contains Bread and Bread 2 times in string, then need to print the middle string. If its not repeating 2 times then blank
+
+Input
+str = "BreadJamBread";  O/P :- "This is Jam"
+
+str = "yyyBreadCharBreadxxx";  O/P :- "This is Char"
+
+str = "Breadysandyuyuyu";   O/P :- ""
+
+
