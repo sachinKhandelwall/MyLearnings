@@ -1,0 +1,12 @@
+
+
+Step Over(F6) - executes the line and then continue to next line, i.e., executes the line where breakpoint is there and then controller moves to the next line. It goes step by step to next line. eg. 
+If breakpoint is at line number 6, 10, 15. First controller stops at line no. 6 because of breakpoint. Now, on pressing F6 controller moves to line 7, then 8 and so on.
+Also if at any line say line num 10 one custom method is written and inside that method we have placed breakpoints at some lines, then in this case also on pressing F6 from line 10 controller will move to that breakpoint which is inside the method.
+
+F8(Resume) - Controller moves to the next breakpoint on pressing F8. On pressing F8 from line no. 6, controller moves to next breakpoint i.e. line 10. From line 10 if we press F8, controller will move to line 15.
+
+Step Into(F5) - generally not used as it steps into the pre-defined method. Like from line 10 where a method is written, if we press F5 then controller move inside the method.
+
+
+

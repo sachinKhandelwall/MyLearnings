@@ -1,0 +1,91 @@
+Spotify
+
+
+
+ClientId: f4d7ac33d5934c01a519e40962739ad2
+Client Secret: 0da2ac3197f44220acd793cf64d24518
+
+Scope: playlist-read-private playlist-read-collaborative playlist-modify-private playlist-modify-public
+
+
+1. User need to hit this authorize url from browser to authenticate and give permission to the application
+https://accounts.spotify.com/authorize?client_id=f4d7ac33d5934c01a519e40962739ad2&response_type=code&redirect_uri=https://localhost:8080&scope=playlist-read-private playlist-read-collaborative playlist-modify-private playlist-modify-public&state=34fFs29kd09
+
+A consent screen will be opened after hitting this url and once user clicks on Agree button to provide his consent then the page will be redirected to the redirect_uri to get the auth code.
+
+
+2. We will be redirected to this uri to get the auth code.
+https://localhost:8080/?code=AQAG1MsF7Heh_Ac2jsIvhhwMU01d6JTGGWhUkqFnw9HG3jSjT1FLM3M9a0FwFVwhWNSWHD-aZfC4tLENOFlCQ44zjuhfyX9rHk0FXHfMSuNp4JS55wlinPE_nbJ8JwbEmRxih676ud1X6sEo4v-xLnOKSmvac49NQEi1-vL3CEABufwcF_RaLomxjpGz03k6QqkgzD6yUhGYAfHTCjhBjZqByvUeS2ycOTlrqyzF9KytaoqbikLGlhlN9AxFLhMBrZJHVunrzkOhnK8paAk3yvZADj7uqdlFd__OVnFeMQ&state=34fFs29kd09
+
+Code: AQAG1MsF7Heh_Ac2jsIvhhwMU01d6JTGGWhUkqFnw9HG3jSjT1FLM3M9a0FwFVwhWNSWHD-aZfC4tLENOFlCQ44zjuhfyX9rHk0FXHfMSuNp4JS55wlinPE_nbJ8JwbEmRxih676ud1X6sEo4v-xLnOKSmvac49NQEi1-vL3CEABufwcF_RaLomxjpGz03k6QqkgzD6yUhGYAfHTCjhBjZqByvUeS2ycOTlrqyzF9KytaoqbikLGlhlN9AxFLhMBrZJHVunrzkOhnK8paAk3yvZADj7uqdlFd__OVnFeMQ
+
+This auth code is required to get the access token and refresh token.
+
+
+3. We will hit this POST /token endpoint to get the access and refresh token by using the grant_type as authorization_code, code(auth code which we have received) and redirect_uri along with the client_id and client_secret in the body encoded with x-www-form-urlencoded format.
+
+https://accounts.spotify.com/api/token
+
+
+{
+    "access_token": "BQCVPwHOA8NTClCszMDl9yhDycsGI8M25_lptreIS27PN1Ej4mPIsAUuvWElCf4GaOSoeEYjIg1-yZvYMLz6H52WQGewff7a1dbuiR86RbJUJBgHvOb6kDM6AR801o3P9UgUc3wvB-KLfBBREmkPEuw6pdY9nl2QDmCepNrO3x1Lw0pjTBxBCMl10zGJneafdQcdffdTiNoWuLulmmVKUj2wiFbC9A-UQ5177Xspz1RsXkklB42FH9N38QwrXA3YQ8GDoDhHy90H5Hiv",
+    "token_type": "Bearer",
+    "expires_in": 3600,
+    "refresh_token": "AQAaL34LExuPeu6Bpd0TCl5RzcqrZHziRk_RYwAxeUqrof2xwgK1Hgpaj04UayQ3QB6Cq2XE8WfsknHtaHXhnX-1OBGbZsa03wfA5aE-wfHnuTjqDD7uGpQb_eCf0lHz8qY",
+    "scope": "playlist-read-private playlist-read-collaborative playlist-modify-private playlist-modify-public"
+}
+
+
+4. Renew Access Token
+Also we can use this POST endpoint to renew the access token using the refresh token in case the access token is expired by using the grant_type as refresh_token, refresh_token(refresh token which we have received) along with the client_id and client_secret in the body encoded with x-www-form-urlencoded format.
+
+https://accounts.spotify.com/api/token 
+
+
+{
+    "access_token": "BQCNoUV7YwV5apdTAt_ooQlh0cOkirOjtDiK1PuSvSm5FrpviEu-GiScAQEPLMD5H86EkaF2onverBsblC0jPYUPSTaLlaAbRy4Fdt97RgOOiwVyVjh3dDvvUv_ifiSBbPsOWGd3_4VpEjJH8u01xm2DmTmyFRWR0rJFtr9AmDZ1gXlTTBTTnuha1XHjLEOWRCTBm3dOe8fOVJmfpOWKX9KIjDpzUfERZB_cfbD_lPLStoxr8vKg7zViN-tImt_SWE5yH5_kzMk-Pbwk",
+    "token_type": "Bearer",
+    "expires_in": 3600,
+    "scope": "playlist-read-private playlist-read-collaborative playlist-modify-private playlist-modify-public"
+}
+
+
+Spotify user id: 317n3igjsqemvl4sqays7iqn5eda
+Playlist id: 1QDDXQSbfcLtKLyDzNGVAB
+
+
+7uGDxwcug17k0piLIHdAqJ
+
+
+mvn test -DBASE_URI="https://api.spotify.com" -DACCOUNT_BASE_URI="https://accounts.spotify.com"
+
+
+testNG configuration:
+-ea -DBASE_URI="https://api.spotify.com" -DACCOUNT_BASE_URI="https://accounts.spotify.com"
+
+
+Github token:
+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
+
+
+
+
+
+Install the latest LTS version: brew install jenkins-lts
+Start the Jenkins service: brew services start jenkins-lts
+Restart the Jenkins service: brew services restart jenkins-lts
+Update the Jenkins version: brew upgrade jenkins-lts
+
+
+
+mvn clean test -DBASE_URI="https://api.spotify.com" -DACCOUNT_BASE_URI="https://accounts.spotify.com"
+
+BASE_URI="https://api.spotify.com"
+ACCOUNT_BASE_URI="https://accounts.spotify.com"
+
+
+
+
+
+
+

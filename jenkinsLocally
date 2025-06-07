@@ -1,0 +1,145 @@
+Java is pre-requisite for Jenkins
+
+1. Download Jenkins from jenkins.io or via homebrew command in mac 'brew install jenkins'
+
+2. jenkins.war file will be installed in the path
+
+ /opt/homebrew/opt/jenkins-lts/libexec/jenkins.war
+
+3. To start the jenkins server:
+
+java -jar /opt/homebrew/opt/jenkins-lts/libexec/jenkins.war --httpPort=8080
+
+since 8080 is default port we can skip setting the port and enter the command like this:
+
+java -jar /opt/homebrew/opt/jenkins-lts/libexec/jenkins.war
+
+or can set any other port number at which we want jenkins to run locally
+
+4. To check jenkins is already running in our system is not, enter this command on terminal:
+
+ps -ef| grep jenkins
+
+The 'ps -ef' command is used to list all running processes on Unix-like systems (Linux, macOS, etc.) in full format.
+
+ps (Process Status): This command shows information about active processes.
+
+-e: Show all processes running in the system(not just those owned by the current user).
+
+-f: Show processes in full-format listing, including extra details like UID, PID, PPID, and the full command.
+
+For example, output of ps -ef| grep jenkins command wil be like:
+
+503 98472 98255   0 12:53PM ttys000    0:16.96 /usr/bin/java -jar /opt/homebrew/opt/jenkins-lts/libexec/jenkins.war --httpPort=8080
+
+where 503	is the UID i.e., User ID who started the process
+where 98472 is the PID (Process ID) here.
+
+5. To stop the running jenkins server, we can use the command 'kill -9 PID' where PID will be the process id of the jenkins
+For example, in our case:
+kill -9 98472
+
+
+**************************************************************************************************************
+
+
+Setting up jenkins to create a job for automation suite ***
+
+Step 1. Install Required Plugins in Jenkins :
+1. Maven Integration plugin.
+2. TestNG Results plugin (to view testNg reports)
+3. Git plugin (for fetching the automation suite from Github)
+4. Test Results Analyzer plugin (to show the test results properly)
+5. Allure plugin
+
+Plugins can be found under Plugins section of Manage Jenkins.
+Manage Jenkins -> Plugins
+
+
+Step 2. Configure Java & Maven in Jenkins :
+Manage Jenkins -> Tools
+
+Need to configure JAVA_HOME path in Java Installations, MAVEN_HOME path in Maven Installations, etc.
+
+
+JAVA_HOME i.e. the location where jdk is installed in our system can be found using the command:
+/usr/libexec/java_home
+
+Output will be like:
+/Users/sachinkhandelwal/Library/Java/JavaVirtualMachines/corretto-17.0.11/Contents/Home
+
+
+MAVEN_HOME i.e. the location where Maven is installed in our system can be found using the command:
+mvn -version
+this command also provides the Apache Maven version installed in our system.
+
+Output will be like:
+Apache Maven 3.8.5 (3599d3414f046de2324203b78ddcf9b5e4388aa0)
+Maven home: /opt/homebrew/Cellar/maven/3.8.5/libexec
+
+
+java -version command provides the JDK version installed in our system.
+
+
+So, In Jenkins under Manage Jenkins > Tools > JDK installations, need to configure like as
+Name: jdk17
+JAVA_HOME: /Users/sachinkhandelwal/Library/Java/JavaVirtualMachines/corretto-17.0.11/Contents/Home
+
+Similarly, for Maven installations, need to configure as
+Name: Maven_3.8.5
+MAVEN_HOME: /opt/homebrew/Cellar/maven/3.8.5/libexec
+
+
+
+Also, for integration allure report on Jenkins, we need to install allure plugin first and then need to configure Allure_Home path in Manage Jenkins > Tools > Allure Commandline 
+
+ALLURE_HOME path can be found using the command:
+brew --prefix allure
+
+Output will be like:
+/opt/homebrew/opt/allure
+
+
+allure --version provides the allure reporting installed in our system like '2.28.0'
+So, for allure reporting we can configure as
+Name: Allure_2.28.0
+ALLURE_HOME: /opt/homebrew/bin/allure
+
+
+**************************************************************************************************************
+
+
+Steps to configure jenkins job to run Selenium Java & TestNG UI automation suites with allure reporting:
+
+1. Create a new Freestyle project with any name like 'SeleniumJavaUiAutomation'.
+
+2. Souce code management step: 
+Add git repo url in Souce code management step and provide credential if repo is private else not.
+Keep master branch as it is in Branch Specifier for the Branches to build option.
+
+3. Build Steps:
+Add a build step here like 'Invoke top-level Maven targets'.
+Select 'Maven Version' which was configured in Maven Installations.
+In Goals, provide the maven commands to be executed to run the test cases and also for reporting.
+For example:
+
+clean test -DsuiteXmlFile=testng.xml
+allure:report
+
+4. Post-build Actions:
+Add post-build action like 'Publish TestNG Results' by providing testNg results path '**/testng-results.xml'.
+Also, add post-build action like 'Allure Report' for setting Allure results directories path 'target/allure-results'
+Also, can add post-build action like 'Archive the artifacts' by providing path of the file to archive at 'Files to archive'
+like 'target/surefire-reports/*.html'.
+
+
+Jenkins will look like this:
+https://prnt.sc/_56a5_5lzsUL
+allure report: https://prnt.sc/-XUxzU74iiln
+
+
+mvn allure:report - creates the HTML report(index.html) at: target/site/allure-maven-plugin/
+
+
+**************************************************************************************************************
+

@@ -1,0 +1,58 @@
+varunagarwal627@gmail.com
+
+ClientId: 894719141460-cpgqkk0oklrj5v7kue3kbi6dkcgnj4l7.apps.googleusercontent.com
+ClientSecret: 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
+
+Scope: https://mail.google.com/
+
+Redirect uri: https://localhost:8080
+
+1. Hit the Authorization request so that user can authorize the 3rd party app by entering his username and password of gmail so that the 3rd party app can get auth code from the Google Authorization server from the redirect uri.
+
+https://accounts.google.com/o/oauth2/v2/auth?scope=https://mail.google.com/&access_type=offline&include_granted_scopes=true&response_type=code&state=state_parameter_passthrough_value&redirect_uri=https://localhost:8080&client_id=894719141460-cpgqkk0oklrj5v7kue3kbi6dkcgnj4l7.apps.googleusercontent.com
+
+
+2. Redirect uri on screen after entering the credential:
+https://localhost:8080/?state=state_parameter_passthrough_value&code=4/0AeaYSHAnMQ_PpOcDuWFO8mE3SdhV7oBCXCg2_kVPG5mqzTkvXV6s8xR4Q9Yhn2-T_h1Ilw&scope=https://mail.google.com/
+
+We can notice that Auth code is present in the query param.
+
+Auth Code: 4/0AeaYSHAnMQ_PpOcDuWFO8mE3SdhV7oBCXCg2_kVPG5mqzTkvXV6s8xR4Q9Yhn2-T_h1Ilw
+
+3. Exchange authorization code for access and refresh tokens by calling Post Token API.
+
+{
+    "access_token": "yya29.a0AfB_byAmhDGU8xlzQf8swwlSW8oIFSKzHGSZK_4ZSF4iE3TrEF7cH0020M1aeVyOkCs_7bLWqA8Xf5Y9QmpG2P7lFxQfHqhmblXtNeK4mU1Pl5NM7s0Kr19kG3fRtY8OGOLXnrX_I_Ie7Ac9DWt6Fksm0iGroThn1R4HaCgYKAZ4SARASFQHGX2MiyJGKTwijsWKDOVyoYlFQyA0171",
+    "expires_in": 3599,
+    "refresh_token": "1//0g3PldFhErl9qCgYIARAAGBASNwF-L9IrCaruOIxWkil3ow_jN_p9GBJBDhskgV2WWYObLs1940zz_df4NNU8zoWPP5voCO0Dg8M",
+    "scope": "https://mail.google.com/",
+    "token_type": "Bearer"
+}
+
+
+From: varunagarwal627@gmail.com
+To: varunagarwal627@gmail.com
+Subject: Test Email
+
+Sending from Gmail API
+
+Base64 Encoded:
+RnJvbTogdmFydW5hZ2Fyd2FsNjI3QGdtYWlsLmNvbQpUbzogdmFydW5hZ2Fyd2FsNjI3QGdtYWlsLmNvbQpTdWJqZWN0OiBUZXN0IEVtYWlsCgpTZW5kaW5nIGZyb20gR21haWwgQVBJ
+
+
+
+---------------------------------------------------------------------------------------------------------
+
+so basically 3rd party app register krta hai phle scope etc set krne ke baad ki us app ko user ka kya kya data chahiye.
+fir jab user us 3rd party app par 'Sign up with gooogle' etc krta hai ya to 3rd party app google ke auth server par redirect krti hai user ko.  
+
+so jis userId and password se user like 'sachin' continue krega, auth code Auth server(like GOOGLE) se usi user ka i.e. resource owner(sachin) ke against auth code milega which is required for getting access token after redirecting to redirect uri set py 3rd party app.
+
+3rd party app again auth server ko hit krega(/token endopint ko) auth code leke for getting access token..and auth server will return the access token along with the refresh token.
+
+access token basically required hota hai to access a user(Resource owner) resources jo ki resource server par rhta hai like GMAIL.
+So we can get the resouces or info or manipulate the data or resources of the user jiske account ke liye access token Auth server se 3rd party app ko mila tha, i.e. jis user account like 'sachin' ke liye auth server like 'google' ne auth_code diya tha 3rd party app ko aur fir us code se 3rd party app got the access token from Google.
+
+
+
+
