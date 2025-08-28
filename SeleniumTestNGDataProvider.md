@@ -7,11 +7,6 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-/**
- * Example TestNG Data-Driven Test using Selenium
- * 
- * Demonstrates two ways of providing test data with @DataProvider
- */
 public class LoginTest {
 
     WebDriver driver;
@@ -20,17 +15,12 @@ public class LoginTest {
     public void setup() {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
-        driver.get("https://example.com/login");  // Replace with actual login URL
+        driver.get("https://example.com/login"); // Replace with real login URL
     }
 
-    /**
-     * --- DataProvider (Way 1) ---
-     * Define rows and columns explicitly, then return data.
-     */
+    // ✅ Way 1: Explicit row/col definition
     @DataProvider(name = "loginDataExplicit")
     public Object[][] getExplicitData() {
-
-        // 3 rows × 2 columns (username, password)
         Object[][] data = new Object[3][2];
 
         data[0][0] = "user1@example.com";
@@ -45,10 +35,7 @@ public class LoginTest {
         return data;
     }
 
-    /**
-     * --- DataProvider (Way 2) ---
-     * Return data objects directly in a 2D array.
-     */
+    // ✅ Way 2: Direct inline data
     @DataProvider(name = "loginDataDirect")
     public Object[][] getDirectData() {
         return new Object[][] {
@@ -58,18 +45,13 @@ public class LoginTest {
         };
     }
 
-    /**
-     * --- Test Method ---
-     * Uses DataProvider to supply multiple username/password sets.
-     */
-    @Test(dataProvider = "loginDataDirect")  
-    // Change to "loginDataExplicit" to try the 1st way
+    // 🔹 Test Method
+    @Test(dataProvider = "loginDataDirect")
     public void loginTest(String username, String password) {
         driver.findElement(By.id("username")).sendKeys(username);
         driver.findElement(By.id("password")).sendKeys(password);
         driver.findElement(By.id("loginBtn")).click();
 
-        // Dummy check: assume dashboard should appear after login
         boolean isLoggedIn = driver.findElements(By.id("dashboard")).size() > 0;
         Assert.assertTrue(isLoggedIn, "Login failed for user: " + username);
     }
