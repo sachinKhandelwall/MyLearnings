@@ -20,7 +20,7 @@ public class LoginTest {
 
     // ✅ Way 1: Explicit row/col definition
     
-    @DataProvider(name = "loginDataExplicit")
+    @DataProvider(name = "loginData")
     public Object[][] getExplicitData() {
         Object[][] data = new Object[3][2];
 
@@ -38,7 +38,7 @@ public class LoginTest {
 
     // ✅ Way 2: Direct inline data
     
-    @DataProvider(name = "loginDataDirect")
+    @DataProvider(name = "loginData")
     public Object[][] getDirectData() {
         return new Object[][] {
             {"user1@example.com", "password1"},
@@ -48,7 +48,7 @@ public class LoginTest {
     }
 
     // 🔹 Test Method
-    @Test(dataProvider = "loginDataDirect")
+    @Test(dataProvider = "loginData")
     public void loginTest(String username, String password) {
         driver.findElement(By.id("username")).sendKeys(username);
         driver.findElement(By.id("password")).sendKeys(password);
