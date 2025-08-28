@@ -19,6 +19,7 @@ public class LoginTest {
     }
 
     // ✅ Way 1: Explicit row/col definition
+    
     @DataProvider(name = "loginDataExplicit")
     public Object[][] getExplicitData() {
         Object[][] data = new Object[3][2];
@@ -36,6 +37,7 @@ public class LoginTest {
     }
 
     // ✅ Way 2: Direct inline data
+    
     @DataProvider(name = "loginDataDirect")
     public Object[][] getDirectData() {
         return new Object[][] {
