@@ -9,6 +9,7 @@ import org.testng.annotations.Test;
 
 /**
  * Example TestNG Data-Driven Test using Selenium
+ * 
  * Demonstrates two ways of providing test data with @DataProvider
  */
 public class LoginTest {
@@ -19,7 +20,7 @@ public class LoginTest {
     public void setup() {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
-        driver.get("https://example.com/login"); // Replace with actual login URL
+        driver.get("https://example.com/login");  // Replace with actual login URL
     }
 
     /**
@@ -28,6 +29,7 @@ public class LoginTest {
      */
     @DataProvider(name = "loginDataExplicit")
     public Object[][] getExplicitData() {
+
         // 3 rows × 2 columns (username, password)
         Object[][] data = new Object[3][2];
 
@@ -49,10 +51,10 @@ public class LoginTest {
      */
     @DataProvider(name = "loginDataDirect")
     public Object[][] getDirectData() {
-        return new Object[][]{
-                {"user1@example.com", "password1"},
-                {"user2@example.com", "password2"},
-                {"user3@example.com", "password3"}
+        return new Object[][] {
+            {"user1@example.com", "password1"},
+            {"user2@example.com", "password2"},
+            {"user3@example.com", "password3"}
         };
     }
 
@@ -60,7 +62,7 @@ public class LoginTest {
      * --- Test Method ---
      * Uses DataProvider to supply multiple username/password sets.
      */
-    @Test(dataProvider = "loginDataDirect")
+    @Test(dataProvider = "loginDataDirect")  
     // Change to "loginDataExplicit" to try the 1st way
     public void loginTest(String username, String password) {
         driver.findElement(By.id("username")).sendKeys(username);
