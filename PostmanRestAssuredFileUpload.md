@@ -2,30 +2,25 @@
 
 ### 🔹 Postman (GUI)
 
-
+```http
 POST http://localhost:8080/upload
+
 Go to Body → form-data
-Key = file, Type = File, Value = testfile.txt
 
-Postman auto-sets Content-Type: multipart/form-data.
+Key = file
 
+Type = File
 
-**Body → form-data**
+Value = testfile.txt
 
-| KEY        | TYPE | VALUE          |
-|------------|------|----------------|
-| file       | File | testfile.txt   |
+Postman auto-sets:
+Content-Type: multipart/form-data
 
-**Note on Key:**  
-The key does **not** always have to be `file`.  
-It depends on what the backend expects (e.g., `file`, `document`, `image`, `profilePic`).  
-In Postman and RestAssured, you must use the same key name that the API requires.  
+Note on Key:
+The key does not always have to be file.
+It depends on what the backend expects (e.g., file, document, image, profilePic).
+In Postman and RestAssured, you must use the same key name that the API requires.
 
----
-
-### 🔹 RestAssured (Java)
-
-```java
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
