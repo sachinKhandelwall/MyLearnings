@@ -21,7 +21,6 @@ Response response = given()
         .statusCode(200)
         .extract().response();
 
-```java
 // Preemptive Basic Auth (preferred)
 // Sends credentials in the very first request → saves one extra round trip
 Response response = given()
