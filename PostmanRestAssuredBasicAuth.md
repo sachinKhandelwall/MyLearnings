@@ -6,8 +6,6 @@
 // Username = admin , Password = password123
 // Postman auto-adds: Authorization: Basic YWRtaW46cGFzc3dvcmQxMjM= (base64 of admin:password123)
 
-// --------------------------------------------------
-
 // 🔹 RestAssured
 
 // Non-preemptive Basic Auth (2-step process)
@@ -29,8 +27,6 @@ Response response = given()
         .then()
         .statusCode(200)
         .extract().response();
-
-// --------------------------------------------------
 
 // 🔹 Quick Notes
 // .auth().basic(user, pass) → Non-preemptive (2-step: request → 401 → resend with creds)
