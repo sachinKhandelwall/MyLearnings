@@ -4,7 +4,7 @@
 - Example: `GET http://localhost:8080/secure-data`
 - Go to **Authorization → Basic Auth**
 - Enter Username = `admin`, Password = `password123`
-- Postman auto-adds:  
+- Postman auto-adds in Request Header:  
   `Authorization: Basic YWRtaW46cGFzc3dvcmQxMjM=` (base64 of `admin:password123`)
 
 ---
