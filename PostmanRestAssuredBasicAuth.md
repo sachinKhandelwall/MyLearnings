@@ -5,7 +5,7 @@
 - Go to **Authorization → Basic Auth**
 - Enter Username = `admin`, Password = `password123`
 - Postman auto-adds in Request Header:  
-  `Authorization: Basic YWRtaW46cGFzc3dvcmQxMjM=` (base64 of `admin:password123`)
+  `Authorization: Basic YWRtaW46cGFzc3dvcmQxMjM=` (Base64 of `admin:password123`)
 
 ---
 
