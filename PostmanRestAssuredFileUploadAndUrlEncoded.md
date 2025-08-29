@@ -1,26 +1,22 @@
 ## 📌 Postman + RestAssured File Upload
 
-
 POST http://localhost:8080/upload
 
-Go to **Body → form-data**
-- **Key** = `file`
-- **Type** = `File`
-- **Value** = `testfile.txt`
+Go to Body → form-data
 
-Postman auto-sets:
-Content-Type: multipart/form-data
+    Key = file
+    Type = File
+    Value = testfile.txt
+
+Postman auto-sets: Content-Type: multipart/form-data
 
 **Note on Key:**  
-The key does **not** always have to be `file`.  
-It depends on what the backend expects (e.g., `file`, `document`, `image`, `profilePic`).  
+The key does not always have to be file.  
+It depends on what the backend expects (e.g., file, document, image, profilePic).  
 In Postman and RestAssured, you must use the same key name that the API requires.  
-
----
 
 ### 🔹 RestAssured (Java)
 
-```java
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
@@ -48,7 +44,6 @@ public class FileUploadExample {
     }
 }
 
-
 ---
 
 ## 📌 Postman + RestAssured URL Encoded
@@ -57,8 +52,6 @@ public class FileUploadExample {
 - Used to send form data (`application/x-www-form-urlencoded`) in the request body.  
 - Commonly used in login/auth APIs.  
 - Equivalent to Postman → Body → x-www-form-urlencoded.  
-
----
 
 ### 🔹 Postman Example
 POST http://localhost:8080/login  
@@ -71,10 +64,8 @@ POST http://localhost:8080/login
 
 Header (auto): `Content-Type: application/x-www-form-urlencoded`
 
----
-
 ### 🔹 RestAssured Example
-```java
+
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
@@ -97,4 +88,3 @@ public class FormParamExample {
         System.out.println("Response: " + response.asString());
     }
 }
-
