@@ -4,7 +4,7 @@
 - Example: `GET http://localhost:8080/secure-data`  
 - In Postman → **Authorization → Basic Auth**  
 - Username = `admin` , Password = `password123`  
-- Postman auto-adds:  
+- Postman auto-adds in Request Header:  
   `Authorization: Basic YWRtaW46cGFzc3dvcmQxMjM=` (base64 of `admin:password123`)  
 
 ---
@@ -30,3 +30,11 @@ Response response = given()
         .then()
         .statusCode(200)
         .extract().response();
+
+---
+
+🔹 Quick Notes
+
+.auth().basic(user, pass) → Non-preemptive Basic Auth (2-step: request → 401 → resend with creds)
+
+.auth().preemptive().basic(user, pass) → Preemptive Basic Auth (sends creds in 1st request, saves round trip, preferred if API always requires Basic Auth)
