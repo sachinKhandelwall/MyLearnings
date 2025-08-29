@@ -46,10 +46,12 @@ public class FileUploadExample {
 
 ---
 
-## 📌 Postman + RestAssured URL Encoded
+## 📌 Postman + RestAssured URL Encoded (a.k.a. application/x-www-form-urlencoded)
 
 ### 🔹 What is it?
-- Used to send form data (`application/x-www-form-urlencoded`) in the request body.  
+- Used to send form data (`application/x-www-form-urlencoded`) in the request body.
+- Data is sent as key-value pairs, joined with &, and special characters are percent-encoded.
+- For example(space in name) fullName=John Doe   →   fullName=John%20Doe
 - Commonly used in login/auth APIs.  
 - Equivalent to Postman → Body → x-www-form-urlencoded.  
 
