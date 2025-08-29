@@ -4,6 +4,11 @@
 
 
 POST http://localhost:8080/upload
+Go to Body → form-data
+Key = file, Type = File, Value = testfile.txt
+
+Postman auto-sets Content-Type: multipart/form-data.
+
 
 **Body → form-data**
 
@@ -36,7 +41,7 @@ public class FileUploadExample {
         File testFile = new File("src/test/resources/testfile.txt");
 
         Response response = given()
-                .multiPart("file", testFile, "text/plain") // key must match API (e.g., file, image, document)
+                .multiPart("file", testFile) // key must match API (e.g., file, image, document)
                 .contentType(ContentType.MULTIPART)
                 .when()
                 .post("/upload")
