@@ -35,6 +35,8 @@ Response response = given()
 
 🔹 Quick Notes
 
-.auth().basic(user, pass) → Non-preemptive Basic Auth (2-step: request → 401 → resend with creds)
+.auth().basic(user, pass) →
+ Non-preemptive Basic Auth (2-step: request → 401 → resend with creds)
 
-.auth().preemptive().basic(user, pass) → Preemptive Basic Auth (sends creds in 1st request, saves round trip, preferred if API always requires Basic Auth)
+.auth().preemptive().basic(user, pass) →
+Preemptive Basic Auth (sends creds in 1st request, saves round trip, preferred if API always requires Basic Auth)
