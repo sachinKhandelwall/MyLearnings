@@ -10,7 +10,6 @@
 ---
 
 ### 🔹 RestAssured
-
 // Non-preemptive Basic Auth (2-step process)
 // Sends credentials only after server responds with 401 Unauthorized
 Response response = given()
@@ -34,10 +33,5 @@ Response response = given()
 ---
 
 ### 🔹 Quick Notes
-- `.auth().basic(user, pass)` → **Non-preemptive Basic Auth**  
-  - Sends creds only after `401 Unauthorized`  
-  - 2-step process: request → 401 → resend with creds  
-- `.auth().preemptive().basic(user, pass)` → **Preemptive Basic Auth**  
-  - Sends creds in **first request**  
-  - Saves one extra round trip  
-  - Commonly preferred when API always requires Basic Auth  
+- `.auth().basic(user, pass)` → **Non-preemptive Basic Auth** (2-step: request → 401 → resend with creds)  
+- `.auth().preemptive().basic(user, pass)` → **Preemptive Basic Auth** (sends creds in 1st request, saves round trip, preferred if API always requires Basic Auth)  
